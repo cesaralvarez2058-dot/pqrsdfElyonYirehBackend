@@ -1,0 +1,41 @@
+version: "3.9"
+
+services:
+  backend:
+    # Construye la imagen desde el Dockerfile local
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    image: pqrsdf-elyonyireh-backend:latest
+    container_name: pqrsdf-backend
+
+    # Las variables de entorno se cargan desde el archivo .env
+    # El .env NO se incluye dentro de la imagen; se inyecta en tiempo de ejecución
+    env_file:
+      - .env
+
+    ports:
+      - "8080:8080"
+
+    volumes:
+      # Persistir archivos subidos (evidencias) fuera del contenedor
+      - uploads_data:/app/uploads
+      # Persistir logs fuera del contenedor
+      - logs_data:/app/logs
+
+    restart: unless-stopped
+
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:8080/actuator/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+
+# Volúmenes nombrados para persistencia de datos
+volumes:
+  uploads_data:
+    driver: local
+  logs_data:
+    driver: local

@@ -1,0 +1,21 @@
+﻿[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------< com.elyonyireh:pqrsdfelyonyirehbackend >---------------
+[INFO] Building pqrsdfelyonyirehbackend 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ pqrsdfelyonyirehbackend ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 0 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ pqrsdfelyonyirehbackend ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 44 source files with javac [debug parameters release 17] to target\classes
+[WARNING] /C:/Users/Sistemas-Cesar/Desktop/ProyectoPQRSDF/pqrsdfElyonYirehBackend/src/main/java/com/elyonyireh/pqrsdfelyonyirehbackend/mappers/PqrsdfMapper.java:[22,12] Unmapped target properties: "respuestaAdmin, fechaRespuesta, calificacionUsuario, observacionUsuario, area".
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  11.132 s
+[INFO] Finished at: 2026-04-05T17:10:55-05:00
+[INFO] ------------------------------------------------------------------------

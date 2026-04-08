@@ -1,0 +1,32 @@
+# Ignorar artefactos de compilación (se regeneran en el build de Docker)
+target/
+
+# Archivos de configuración de IDE
+.idea/
+.vscode/
+*.iml
+*.iws
+
+# Logs locales (no pertenecen a la imagen)
+logs/
+*.log
+*.txt
+
+# Uploads locales (se monta como volumen en producción)
+uploads/
+
+# Archivos de entorno sensibles
+.env
+
+# Archivos de Git
+.git/
+.gitignore
+.gitattributes
+
+# Documentación
+HELP.md
+README.md
+
+# Archivos temporales del SO
+.DS_Store
+Thumbs.db

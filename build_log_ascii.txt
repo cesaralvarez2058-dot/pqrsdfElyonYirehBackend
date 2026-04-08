@@ -1,0 +1,62 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------< com.elyonyireh:pqrsdfelyonyirehbackend >---------------
+[INFO] Building pqrsdfelyonyirehbackend 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.5.0:clean (default-clean) @ pqrsdfelyonyirehbackend ---
+[INFO] Deleting C:\Users\Sistemas-Cesar\Desktop\ProyectoPQRSDF\pqrsdfElyonYirehBackend\target
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ pqrsdfelyonyirehbackend ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 0 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ pqrsdfelyonyirehbackend ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 42 source files with javac [debug parameters release 17] to target\classes
+[INFO] -------------------------------------------------------------
+[WARNING] COMPILATION WARNING : 
+[INFO] -------------------------------------------------------------
+[WARNING] /C:/Users/Sistemas-Cesar/Desktop/ProyectoPQRSDF/pqrsdfElyonYirehBackend/src/main/java/com/elyonyireh/pqrsdfelyonyirehbackend/mappers/PqrsdfMapper.java:[22,12] Unmapped target properties: "respuestaAdmin, fechaRespuesta, calificacionUsuario, observacionUsuario, area".
+[INFO] 1 warning
+[INFO] -------------------------------------------------------------
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /C:/Users/Sistemas-Cesar/Desktop/ProyectoPQRSDF/pqrsdfElyonYirehBackend/src/main/java/com/elyonyireh/pqrsdfelyonyirehbackend/config/SecurityConfig.java:[74,60] constructor DaoAuthenticationProvider in class org.springframework.security.authentication.dao.DaoAuthenticationProvider cannot be applied to given types;
+  required: org.springframework.security.core.userdetails.UserDetailsService
+  found:    no arguments
+  reason: actual and formal argument lists differ in length
+[ERROR] /C:/Users/Sistemas-Cesar/Desktop/ProyectoPQRSDF/pqrsdfElyonYirehBackend/src/main/java/com/elyonyireh/pqrsdfelyonyirehbackend/config/SecurityConfig.java:[75,31] cannot find symbol
+  symbol:   method setUserDetailsService(com.elyonyireh.pqrsdfelyonyirehbackend.services.CustomUserDetailsService)
+  location: variable authenticationProvider of type org.springframework.security.authentication.dao.DaoAuthenticationProvider
+[ERROR] /C:/Users/Sistemas-Cesar/Desktop/ProyectoPQRSDF/pqrsdfElyonYirehBackend/src/main/java/com/elyonyireh/pqrsdfelyonyirehbackend/controllers/AuthController.java:[120,27] incompatible types: inference variable T has incompatible bounds
+    equality constraints: java.util.Map<java.lang.String,java.lang.Object>
+    lower bounds: java.util.Map<java.lang.String,java.lang.Object&java.io.Serializable&java.lang.Comparable<? extends java.lang.Object&java.io.Serializable&java.lang.Comparable<?>&java.lang.constant.Constable&java.lang.constant.ConstantDesc>&java.lang.constant.Constable&java.lang.constant.ConstantDesc>
+[INFO] 3 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  10.037 s
+[INFO] Finished at: 2026-03-23T13:45:05-05:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.14.1:compile (default-compile) on project pqrsdfelyonyirehbackend: Compilation failure: Compilation failure: 
+[ERROR] /C:/Users/Sistemas-Cesar/Desktop/ProyectoPQRSDF/pqrsdfElyonYirehBackend/src/main/java/com/elyonyireh/pqrsdfelyonyirehbackend/config/SecurityConfig.java:[74,60] constructor DaoAuthenticationProvider in class org.springframework.security.authentication.dao.DaoAuthenticationProvider cannot be applied to given types;
+[ERROR]   required: org.springframework.security.core.userdetails.UserDetailsService
+[ERROR]   found:    no arguments
+[ERROR]   reason: actual and formal argument lists differ in length
+[ERROR] /C:/Users/Sistemas-Cesar/Desktop/ProyectoPQRSDF/pqrsdfElyonYirehBackend/src/main/java/com/elyonyireh/pqrsdfelyonyirehbackend/config/SecurityConfig.java:[75,31] cannot find symbol
+[ERROR]   symbol:   method setUserDetailsService(com.elyonyireh.pqrsdfelyonyirehbackend.services.CustomUserDetailsService)
+[ERROR]   location: variable authenticationProvider of type org.springframework.security.authentication.dao.DaoAuthenticationProvider
+[ERROR] /C:/Users/Sistemas-Cesar/Desktop/ProyectoPQRSDF/pqrsdfElyonYirehBackend/src/main/java/com/elyonyireh/pqrsdfelyonyirehbackend/controllers/AuthController.java:[120,27] incompatible types: inference variable T has incompatible bounds
+[ERROR]     equality constraints: java.util.Map<java.lang.String,java.lang.Object>
+[ERROR]     lower bounds: java.util.Map<java.lang.String,java.lang.Object&java.io.Serializable&java.lang.Comparable<? extends java.lang.Object&java.io.Serializable&java.lang.Comparable<?>&java.lang.constant.Constable&java.lang.constant.ConstantDesc>&java.lang.constant.Constable&java.lang.constant.ConstantDesc>
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
