@@ -22,19 +22,17 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
 
   mail:
-    host: smtp.gmail.com
-    port: 465
-    username: ${MAIL_USERNAME:auxiliarsistemas@elyonyireh.edu.co}
-    password: ${MAIL_PASSWORD:baup npsf velf fqzm}
-    default-encoding: UTF-8
+    host: smtp-relay.brevo.com
+    port: 587
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
     properties:
       mail:
         smtp:
           auth: true
-          ssl:
-            enable: true
           starttls:
-            enable: false
+            enable: true
+            required: true
           connectiontimeout: 15000
           timeout: 15000
           writetimeout: 15000
