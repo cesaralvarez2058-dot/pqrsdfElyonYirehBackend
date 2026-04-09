@@ -23,7 +23,7 @@ spring:
 
   mail:
     host: smtp.gmail.com
-    port: 587
+    port: 465
     username: ${MAIL_USERNAME:auxiliarsistemas@elyonyireh.edu.co}
     password: ${MAIL_PASSWORD:baup npsf velf fqzm}
     default-encoding: UTF-8
@@ -31,9 +31,10 @@ spring:
       mail:
         smtp:
           auth: true
-          starttls:
+          ssl:
             enable: true
-            required: true
+          starttls:
+            enable: false
           connectiontimeout: 15000
           timeout: 15000
           writetimeout: 15000
