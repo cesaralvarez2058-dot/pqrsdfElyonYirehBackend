@@ -4,11 +4,22 @@ spring:
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
     driver-class-name: org.postgresql.Driver
-  
+    # Limitar pool de conexiones para Supabase free tier (Transaction Mode - puerto 6543)
+    hikari:
+      maximum-pool-size: 3        # Máximo 3 conexiones simultáneas
+      minimum-idle: 1             # Mínimo 1 conexión en reposo
+      connection-timeout: 30000   # 30 segundos para obtener conexión
+      idle-timeout: 600000        # 10 minutos antes de cerrar conexión inactiva
+      max-lifetime: 1800000       # 30 minutos de vida máxima por conexión
+
   jpa:
     hibernate:
-      ddl-auto: update # Crea/actualiza las tablas automáticamente en base a tus @Entity
-    show-sql: true # Muestra las consultas SQL en la consola (útil para desarrollo)
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        # Dialecto explícito para PostgreSQL — evita error "Unable to determine Dialect"
+        dialect: org.hibernate.dialect.PostgreSQLDialect
 
   mail:
     host: smtp.gmail.com
