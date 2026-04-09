@@ -11,6 +11,7 @@ spring:
       connection-timeout: 30000   # 30 segundos para obtener conexión
       idle-timeout: 600000        # 10 minutos antes de cerrar conexión inactiva
       max-lifetime: 1800000       # 30 minutos de vida máxima por conexión
+      auto-commit: false          # Vital para PgBouncer (Supabase) en modo transacción
 
   jpa:
     hibernate:
