@@ -76,25 +76,93 @@ public class EmailService {
      * Envía correo al RESPONSABLE DE ÁREA con el documento Word adjunto al ser asignado un caso.
      */
     @Async
-    public void enviarNotificacionAreaAsignada(String responsableEmail, String responsableNombre, String nombreUsuario, String numeroRadicado, String tipoPqrsd, byte[] documentoWord) {
+    public void enviarNotificacionAreaAsignada(
+            String responsableEmail,
+            String responsableNombre,
+            String nombreUsuario,
+            String numeroRadicado,
+            String tipoPqrsd,
+            byte[] documentoWord) {
+
+        log.info("📨 Iniciando envío de notificación al área. Email: {}, Radicado: {}",
+                responsableEmail, numeroRadicado);
+
         try {
+            // Validaciones preventivas
+            if (responsableEmail == null || responsableEmail.isBlank()) {
+                throw new IllegalArgumentException("El correo del responsable está vacío o es nulo");
+            }
+
+            if (from == null || from.isBlank()) {
+                throw new IllegalArgumentException("La propiedad pqrsdf.admin-email no está configurada");
+            }
+
+            if (nombreUsuario == null || nombreUsuario.isBlank()) {
+                log.warn("⚠️ nombreUsuario llegó nulo o vacío. Se usará valor por defecto.");
+                nombreUsuario = "Usuario";
+            }
+
+            if (responsableNombre == null || responsableNombre.isBlank()) {
+                log.warn("⚠️ responsableNombre llegó nulo o vacío. Se usará valor por defecto.");
+                responsableNombre = "Responsable";
+            }
+
+            if (numeroRadicado == null || numeroRadicado.isBlank()) {
+                throw new IllegalArgumentException("El número de radicado es obligatorio");
+            }
+
+            if (tipoPqrsd == null || tipoPqrsd.isBlank()) {
+                tipoPqrsd = "PQRSDF";
+            }
+
+            log.info("📝 Construyendo mensaje de correo...");
+
             MimeMessage message = mailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
+
             helper.setFrom(from);
             helper.setTo(responsableEmail);
             helper.setSubject("📌 Nueva Asignación de Caso PQRSDF - " + numeroRadicado);
-            helper.setText(buildHtmlAreaAsignada(responsableNombre, nombreUsuario, numeroRadicado, tipoPqrsd), true);
 
-            if (documentoWord != null) {
-                String nombreArchivo = nombreUsuario.replaceAll("\\s+", "_") + "_Detalle_PQRSDF.docx";
-                helper.addAttachment(nombreArchivo, new ByteArrayResource(documentoWord),
-                        "application/vnd.openxmlformats-officedocument.wordprocessingml.document");
+            String html = buildHtmlAreaAsignada(
+                    responsableNombre,
+                    nombreUsuario,
+                    numeroRadicado,
+                    tipoPqrsd
+            );
+
+            helper.setText(html, true);
+
+            // Adjuntar documento si existe
+            if (documentoWord != null && documentoWord.length > 0) {
+                String nombreArchivo = nombreUsuario.replaceAll("\\s+", "_")
+                        + "_Detalle_PQRSDF.docx";
+
+                helper.addAttachment(
+                        nombreArchivo,
+                        new ByteArrayResource(documentoWord),
+                        "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                );
+
+                log.info("📎 Documento adjunto agregado: {}", nombreArchivo);
+            } else {
+                log.warn("⚠️ No se adjuntó documento Word porque llegó nulo o vacío");
             }
 
+            log.info("📤 Enviando correo a: {}", responsableEmail);
+
             mailSender.send(message);
-            log.info("📧 Correo de asignación enviado al responsable del área: {}", responsableEmail);
-        } catch (MessagingException e) {
-            log.error("❌ Error enviando correo al área responsable {}: {}", responsableEmail, e.getMessage());
+
+            log.info("✅ Correo enviado correctamente al responsable del área: {}",
+                    responsableEmail);
+
+        } catch (Exception e) {
+            log.error("❌ ERROR enviando correo al área responsable."
+                            + " Email: {}, Radicado: {}, Error: {}",
+                    responsableEmail,
+                    numeroRadicado,
+                    e.getMessage(),
+                    e); // IMPORTANTE: esto imprime el stack trace completo
         }
     }
 
