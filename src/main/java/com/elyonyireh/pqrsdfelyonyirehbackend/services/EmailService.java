@@ -18,7 +18,8 @@ public class EmailService {
 
     private final JavaMailSender mailSender;
 
-    @Value("${spring.mail.username}")
+    // Usamos el correo del admin (remitente verificado) en lugar del login de Brevo
+    @Value("${pqrsdf.admin-email}")
     private String from;
 
     @Value("${pqrsdf.admin-email}")
