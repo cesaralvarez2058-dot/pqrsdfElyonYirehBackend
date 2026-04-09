@@ -10,8 +10,7 @@ services:
     image: pqrsdf-elyonyireh-backend:latest
     container_name: pqrsdf-backend
 
-    # Las variables de entorno se cargan desde el archivo .env
-    # El .env NO se incluye dentro de la imagen; se inyecta en tiempo de ejecución
+
     env_file:
       - .env
 
