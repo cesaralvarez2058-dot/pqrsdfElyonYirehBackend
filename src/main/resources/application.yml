@@ -12,6 +12,8 @@ spring:
       idle-timeout: 600000        # 10 minutos antes de cerrar conexión inactiva
       max-lifetime: 1800000       # 30 minutos de vida máxima por conexión
       auto-commit: false          # Vital para PgBouncer (Supabase) en modo transacción
+      data-source-properties:     # Fuerza apagar los statements de Java para Supabase
+        prepareThreshold: 0
 
   jpa:
     hibernate:
@@ -24,7 +26,7 @@ spring:
 
   mail:
     host: smtp-relay.brevo.com
-    port: 2525
+    port: 587
     username: ${MAIL_USERNAME}
     password: ${MAIL_PASSWORD}
     protocol: smtp
